@@ -1,0 +1,55 @@
+// =================== Font family text ==================
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@500&display=swap');
+
+
+@font-face {
+    src: url('/assets/css/webfonts/SF-Pro-Text-Regular.otf');
+    font-family: 'SF-Pro-Text-Regular';
+}
+
+$font-text-bold: "SF-Pro-Text-Regular";
+
+
+$primary-font: 'Encode Sans Semi Expanded',
+sans-serif;
+
+// ======================== Color Main ========================
+$main-color: #f13039;
+// $color-mix: linear-gradient(90deg, #FF2808 0%, #FFBD23 90%);
+$color-mix: linear-gradient(91deg, #f13039 18%, #ffb300 200%);
+
+$color-items: #D81D0D;
+$yellow-color: #fff32d;
+$primary-color: #277CEA;
+$green-color: #26BC4E;
+$green-color-light: #1FBF64;
+$gray-light: #a5a4a5;
+
+
+// ======================== Color Icon ========================
+$color-star: #ffce2d;
+$color-sort: #F4F3F1;
+$color-blue: #005AFF;
+$color-blue-vote: #288AD6;
+
+// ======================== Background Color ========================
+$back-white: #fff;
+$back-branch: #F2F2F2;
+$back-light: #EEEEEE;
+$back-yellow-light:#FDF8E4;
+$back-info:#F8F5F5;
+$back-digital: #F5F5F5;
+$back-feedback: #F8F8F8;
+$background-header: #f1f3f8;
+
+$border-orange: #ff5860;
+$border-grey: #DCDCDC;
+$border-search: #E5E5E5;
+$border-red: rgba(241, 48, 57, 0.36);
+
+// ======================== Text color ========================
+$text-search: #AEAEAE;
+$text-hover: #efefef;
+$text-light: #666;
+$text-gray: #000;
+$text-titleProduct: #3b332e;

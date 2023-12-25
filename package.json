@@ -1,0 +1,19 @@
+{
+  "name": "elise",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "sasstocss": "node-sass assets/sass/PC/style.scss assets/css/style.css -w",
+    "sasstocss2": "node-sass assets/sass/Mobile/MBstyles.scss assets/css/mobile.css -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "lodash.throttle": "^4.1.1",
+    "node-sass": "^7.0.1"
+  },
+  "devDependencies": {},
+  "description": ""
+}
