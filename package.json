@@ -4,8 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "sasstocss": "node-sass assets/sass/PC/style.scss assets/css/style.css -w",
-    "sasstocss2": "node-sass assets/sass/Mobile/MBstyles.scss assets/css/mobile.css -w"
+    "sasstocss": "node-sass assets/sass/style.scss assets/css/style.css -w"
   },
   "author": "",
   "license": "ISC",
