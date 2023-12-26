@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head prefix="og: localhost/ns#">
+    <meta charset="UTF-8" content>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="website">
+    <title>ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG - localhost</title>
+    <meta name="description" content="ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG">
+    <meta name="keywords" content="ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG">
+    <meta name="viewport"
+        content="viewport-fit=cover,user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="./assets/css/app.css">
+
+    <style>
+        main {
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body class="">
+    <main class="">
+        <section class="screen active" id="screen__home"
+            style="background: linear-gradient(214deg, #ffffffc2, #ffffffdb, #ffffff), url(./assets/img/ff2306195bkwopt2.jpg) repeat 50% center / cover;">
+            <form method="POST" action="" autocomplete="off" id="login__form" class="login__form"
+                novalidate="novalidate">
+
+                <input type="hidden" name="_token" value="">
+
+                <div class="login__header" style="margin-bottom: 30px">
+                    <img class="login__header-background" src="./assets/img/elise-3d-01.jpg" alt="">
+                    <img class="login__header-logo" src="./assets/img/output-onlinepngtools.png" alt="">
+                </div>
+
+                <div class="login__form-items">
+                    <div class="login__form-item">
+                        <input type="text" autocomplete="new-password" name="login_user_name" id="login_user_name"
+                            placeholder="Tên đăng nhập" value="" class="valid" aria-invalid="false">
+                    </div>
+
+                    <div class="login__form-item">
+                        <input type="password" autocomplete="new-password" name="login_password" id="login_password"
+                            placeholder="Mật khẩu" class="valid" aria-invalid="false">
+                        <i class="far fa-eye"></i>
+                    </div>
+
+                    <div class="login__form-item">
+                        <button type="submit" class="border">Đăng nhập ngay</button>
+                    </div>
+
+                    <div class="login__form-item">
+                        <a href="#" class="login__form-button-register" title="Đăng ký tài khoản ngay">
+                            Chưa có tài khoản? 👉
+                            Đăng ký tài khoản mới
+                        </a>
+                    </div>
+
+                    <div class="login__form-item">
+                        <p>Tài trợ chính:</p>
+
+                        <div class="login__form-partners">
+                            <img src="./assets/img/4s.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- JS -->
+    <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <!-- Script Bootstrap -->
+    <script type="text/javascript" src="./assets/js/bootstrap.bundle.min.js"></script>
+
+    <script defer="">
+        $("#login__form").validate({
+            rules: {
+                login_user_name: {
+                    required: true,
+                },
+                login_password: {
+                    required: true,
+                }
+            },
+            messages: {
+                login_user_name: {
+                    required: 'Tên đăng nhập là bắt buộc',
+                },
+                login_password: {
+                    required: 'Mật khẩu là bắt buộc',
+                }
+            },
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+        $(document).on('click', '.login__form-item i', function (e) {
+            e.preventDefault();
+            let inputPassword = $(this).siblings('input');
+            if (inputPassword.attr('type') == 'password') {
+                inputPassword.attr('type', 'text');
+                $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                inputPassword.attr('type', 'password');
+                $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
+    </script>
+</body>
+
+</html>

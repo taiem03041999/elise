@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head prefix="og: localhost/ns#">
+    <meta charset="UTF-8" content>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="website">
+    <title>ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG - localhost</title>
+    <meta name="description" content="ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG">
+    <meta name="keywords" content="ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG">
+    <meta name="viewport"
+        content="viewport-fit=cover,user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="./assets/css/app.css">
+
+    <style>
+        main {
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body class="">
+    <main class="">
+        <section class="screen active" id="screen__home"
+            style="background: linear-gradient(214deg, #ffffffc2, #ffffffdb, #ffffff), url(./assets/img/ff2306195bkwopt2.jpg) repeat 50% center / cover;">
+            <form method="POST" action="#" autocomplete="off" id="register__form" class="register__form"
+                novalidate="novalidate">
+                <input type="hidden" name="_token" value="EeBZmkpx62EPgkCekVrs11FU7SqsQ0nANWctsKGh">
+
+                <div class="register__header" style="margin-bottom: 30px">
+                    <img class="register__header-background" src="./assets/img/elise-3d-01.jpg" alt="">
+                    <img class="register__header-logo" src="./assets/img/output-onlinepngtools.png" alt="">
+                </div>
+
+                <div class="register__form-items">
+                    <div class="register__form-item">
+                        <input type="text" autocomplete="new-password" name="register_user_name" id="register_user_name"
+                            placeholder="Tên đăng nhập" value="">
+                    </div>
+
+                    <div class="register__form-item">
+                        <input type="password" autocomplete="new-password" name="register_password"
+                            id="register_password" placeholder="Mật khẩu">
+                        <i class="far fa-eye"></i>
+                    </div>
+
+                    <div class="register__form-item">
+                        <input type="password" autocomplete="new-password" name="register_password_confirmation"
+                            id="register_password_confirmation" placeholder="Xác nhận mật khẩu">
+                        <i class="far fa-eye"></i>
+                    </div>
+
+                    <div class="register__form-item">
+                        <button type="submit" class="border">Đăng ký Ngay</button>
+                    </div>
+
+                    <div class="register__form-item">
+                        <a href="#" class="login__form-button-register" title="Đăng ký tài khoản ngay">
+                            Chưa có tài khoản? 👉
+                            Đăng ký tài khoản mới
+                        </a>
+                    </div>
+
+                    <div class="register__form-item">
+                        <p>Tài trợ chính:</p>
+                        <div class="register__form-partners">
+                            <img src="./assets/img/4s.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- JS -->
+    <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <!-- Script Bootstrap -->
+    <script type="text/javascript" src="./assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $("#register__form").validate({
+            rules: {
+                register_user_name: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 30,
+                    validateUserName: true
+                },
+                register_password: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 30,
+                },
+                register_password_confirmation: {
+                    equalTo: "#register_password",
+                    minlength: 6,
+                    maxlength: 30
+                }
+            },
+            messages: {
+                register_user_name: {
+                    required: 'Tên đăng nhập là bắt buộc.',
+                    minlength: 'Tên đăng nhập từ 6 tới 30 kí tự.',
+                    maxlength: 'Tên đăng nhập từ 6 tới 30 kí tự.'
+                },
+                register_password: {
+                    required: 'Mật khẩu là bắt buộc.',
+                    minlength: 'Mật khẩu từ 6 tới 30 kí tự.',
+                    maxlength: 'Mật khẩu từ 6 tới 30 kí tự.'
+                },
+                register_password_confirmation: {
+                    equalTo: 'Xác nhận mật khẩu không khớp với mật khẩu.',
+                    minlength: 'Xác nhận mật khẩu từ 6 tới 30 kí tự.',
+                    maxlength: 'Xác nhận mật khẩu từ 6 tới 30 kí tự.'
+                },
+            },
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+        $(document).on('click', '.register__form-item i', function (e) {
+            e.preventDefault();
+            let inputPassword = $(this).siblings('input');
+            if (inputPassword.attr('type') == 'password') {
+                inputPassword.attr('type', 'text');
+                $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                inputPassword.attr('type', 'password');
+                $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
+    </script>
+</body>
+
+</html>
