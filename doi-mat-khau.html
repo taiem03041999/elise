@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head prefix="og: localhost/ns#">
+    <meta charset="UTF-8" content>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="website">
+    <title>ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG - localhost</title>
+    <meta name="description" content="ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG">
+    <meta name="keywords" content="ELISE - ĐỊNH HƯỚNG PHONG CÁCH THỜI TRANG">
+    <meta name="viewport"
+        content="viewport-fit=cover,user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="./assets/css/app.css">
+
+    <style>
+        main {
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body class="">
+    <main class="">
+        <div class="account__screen historyBet active" id="historyBet" style="display: block;">
+            <div class="historyBet__heading">
+                Lịch sử tham gia
+                <i class="fa-solid fa-x" data-close="#historyBet"></i>
+            </div>
+
+            <div class="changePassword__content" id="changePassword__content">
+                <form class="changePassword__form" action="" method="POST" id="changePassword__form"
+                    name="changePassword__form" novalidate="novalidate">
+                    <div class="changePassword__form-item">
+                        <p>Mật khẩu cũ:</p>
+                        <div class="changePassword__form-input">
+                            <input type="password" autocomplete="new-password" name="old_password" id="old_password"
+                                value="">
+                            <i class="far fa-eye"></i>
+                        </div>
+                    </div>
+
+                    <div class="changePassword__form-item">
+                        <p>Mật khẩu mới:</p>
+                        <div class="changePassword__form-input">
+                            <input type="password" autocomplete="new-password" name="password" id="password" value="">
+                            <i class="far fa-eye"></i>
+                        </div>
+                    </div>
+
+                    <div class="changePassword__form-item">
+                        <p>Xác nhận mật khẩu mới:</p>
+                        <div class="changePassword__form-input">
+                            <input type="password" autocomplete="new-password" name="password_confirmation"
+                                id="password_confirmation" value="">
+                            <i class="far fa-eye"></i>
+                        </div>
+                    </div>
+
+                    <div class="changePassword__form-item">
+                        <button type="button" class="changePassword__form-close"
+                            data-close="#changePassword">Hủy</button>
+                        <button type="submit" class="changePassword__form-submit">Xác nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS -->
+    <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <!-- Script Bootstrap -->
+    <script type="text/javascript" src="./assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        var allow_change_password = true;
+        window.change_password = function () {
+            if (!allow_change_password) return;
+            allow_change_password = false;
+            $.ajax({
+                type: "POST",
+                url: _route_changePassword,
+                data: null,
+                global: false,
+                success: function success(res, status) {
+                    if (res.html) {
+                        $("#changePassword__content").html(res.html);
+                        init_select2();
+                        init_changePassword__form();
+                    }
+                },
+                error: function error(res) {
+                    reload_page();
+                },
+                complete: function complete() {
+                    allow_change_password = true;
+                },
+            });
+        };
+        var allow_change_password_store = true;
+        window.init_changePassword__form = function () {
+            $("#changePassword__form").validate({
+                ignore: [],
+                errorClass: "error",
+                errorElement: "span",
+                errorPlacement: function errorPlacement(error, e) {
+                    e.parents(".changePassword__form-item").append(error);
+                },
+                rules: {
+                    old_password: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 30,
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 30,
+                    },
+                    password_confirmation: {
+                        equalTo: "#password",
+                        minlength: 6,
+                        maxlength: 30,
+                    },
+                },
+                messages: {
+                    old_password: {
+                        required: 'Tên đăng nhập là bắt buộc.',
+                        minlength: 'Tên đăng nhập từ 6 tới 30 kí tự.',
+                        maxlength: 'Tên đăng nhập từ 6 tới 30 kí tự.'
+                    },
+                    password: {
+                        required: 'Mật khẩu là bắt buộc.',
+                        minlength: 'Mật khẩu từ 6 tới 30 kí tự.',
+                        maxlength: 'Mật khẩu từ 6 tới 30 kí tự.'
+                    },
+                    password_confirmation: {
+                        equalTo: 'Xác nhận mật khẩu không khớp với mật khẩu.',
+                        minlength: 'Xác nhận mật khẩu từ 6 tới 30 kí tự.',
+                        maxlength: 'Xác nhận mật khẩu từ 6 tới 30 kí tự.'
+                    },
+                },
+                submitHandler: function submitHandler(form) {
+                    if (!allow_change_password_store) return;
+                    allow_change_password_store = false;
+                    var formData = $(form).serialize();
+                    var formAction = $(form).prop("action");
+                    $.ajax({
+                        type: "POST",
+                        url: formAction,
+                        data: formData,
+                        success: function success(res, status) {
+                            if (res.message) {
+                                notify_success(res.message);
+                            }
+                            $("#changePassword").hide().removeClass("active");
+                        },
+                        error: function error(res) {
+                            create_notify_error(res);
+                        },
+                        complete: function complete() {
+                            allow_change_password_store = true;
+                        },
+                    });
+                },
+            });
+        };
+        $(document).on("click", ".changePassword__form-item i", function (e) {
+            e.preventDefault();
+            var inputPassword = $(this).siblings("input");
+            if (inputPassword.attr("type") == "password") {
+                inputPassword.attr("type", "text");
+                $(this).removeClass("fa-eye").addClass("fa-eye-slash");
+            } else {
+                inputPassword.attr("type", "password");
+                $(this).removeClass("fa-eye-slash").addClass("fa-eye");
+            }
+        });
+    </script>
+</body>
+
+</html>
